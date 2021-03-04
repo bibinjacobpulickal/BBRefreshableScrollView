@@ -32,7 +32,7 @@ public struct BBRefreshableScrollView<Content: View>: View {
 
     @State private var state = BBRefreshState.waiting
 
-    init(offset: CGFloat = 50, onRefresh: @escaping (@escaping () -> Void) -> Void, @ViewBuilder content: () -> Content) {
+    public init(offset: CGFloat = 50, onRefresh: @escaping (@escaping () -> Void) -> Void, @ViewBuilder content: () -> Content) {
         self.offset    = offset
         self.onRefresh = onRefresh
         self.content   = content()
