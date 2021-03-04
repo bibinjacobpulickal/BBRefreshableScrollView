@@ -51,7 +51,7 @@ public struct BBRefreshableScrollView<Content: View>: View {
                     Rectangle()
                         .foregroundColor(.clear)
                         .frame(height: offset)
-                    BBActivityIndicatorView()
+                    BBActivityIndicatorView(isAnimating: state == .loading, hidesWhenStopped: state != .primed)
                 }.offset(y: (state == .loading) ? 0 : -offset)
             }
         }

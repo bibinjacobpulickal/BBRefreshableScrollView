@@ -26,13 +26,16 @@ import SwiftUI
 
 struct BBActivityIndicatorView: UIViewRepresentable {
 
-    var style = UIActivityIndicatorView.Style.large
+    public var isAnimating = true
+    public var hidesWhenStopped = true
+    public var style = UIActivityIndicatorView.Style.large
 
     func makeUIView(context: Context) -> UIActivityIndicatorView {
         UIActivityIndicatorView(style: style)
     }
 
     func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {
-        uiView.startAnimating()
+        isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
+        uiView.hidesWhenStopped = hidesWhenStopped
     }
 }
