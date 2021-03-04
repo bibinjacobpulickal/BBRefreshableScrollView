@@ -61,10 +61,10 @@ public struct BBRefreshableScrollView<Content: View>: View {
                 DispatchQueue.main.async {
                     let movingY = values.first { $0.type == .moving }?.y ?? 0
                     let fixedY = values.first { $0.type == .fixed }?.y ?? 0
-                    let offset = movingY - fixedY
-                    if offset > offset && state == .waiting {
+                    let currentOffset = movingY - fixedY
+                    if currentOffset > offset && state == .waiting {
                         state = .primed
-                    } else if offset < offset && state == .primed {
+                    } else if currentOffset < offset && state == .primed {
                         state = .loading
                         onRefresh {
                             withAnimation {
